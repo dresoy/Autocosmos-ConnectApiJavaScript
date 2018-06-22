@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Autocosmos" />
+    <meta name="copyright" content="Autocosmos.com" />
+    <title>Autocomos Ejemplo de uso API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header>
+            <h1>Ejemplo iteractivo de uso de la API2 de Autocosmos.com</h1>
+            <h3>La documentación completa de la API2 está disponible en
+                <a href="https://www.autocosmos.com.ar/developers">https://www.autocosmos.com.ar/developers</a>
+            </h3>
+            <h3>Para el metodo de calculo de Auth, implementado aquí en JS, puede consultar
+                <a href="https://www.autocosmos.com.ar/developers/help/hmac">https://www.autocosmos.com.ar/developers/help/hmac</a>
+            </h3>
+        </header>
+        <main>
+            <form id="testContent" lang="es">
+                <div class="form-group">
+                    <label for="domain">Dominio</label>
+                    <input type="url" name="domain" class="form-control" aria-describedby="domainHelp" placeholder="https://www.autocosmos.com.ar"
+                        autocomplete="off" value="https://www.autocosmos.com.ar" required>
+                    <small id="domainHelp" class="form-text text-muted">Dominio de Autocosmos (según pais).</small>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="appkey">Application Key</label>
+                        <input type="text" name="appkey" class="form-control" aria-describedby="appkeyHelp" placeholder="" required>
+                        <small id="appkeyHelp" class="form-text text-muted">Codigo provisto por Autocosmos (lower-case sin "-").</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="appsecret">Application Secret</label>
+                        <input type="text" name="appsecret" class="form-control" aria-describedby="appsecretHelp" placeholder="" required>
+                        <small id="appsecretHelp" class="form-text text-muted">Codigo provisto por Autocosmos (lower-case sin "-").</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="accountSignature">Signature Cuenta</label>
+                    <input type="text" name="accountSignature" class="form-control" aria-describedby="accountSignatureHelp" placeholder="">
+                    <small id="accountSignatureHelp" class="form-text text-muted">La signature para pubicar en una cuenta puede ser provista por el usuario de Autocosmos o por un comercial
+                        de Autocosmos.</small>
+                </div>
+                <hr class="m-2" />
+                <div class="form-group">
+                    <label for="endpoint">endpoint</label>
+                    <input type="text" name="endpoint" class="form-control" aria-describedby="endpointHelp" placeholder="/api2/Tests" value="/api2/Tests">
+                    <small id="endpointHelp" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                    <label for="httpMethod">Metodo del request</label>
+                    <select class="form-control" name="httpMethod">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="PATCH">PATCH</option>
+                        <option value="DELETE">DELETE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rqContent">Content del request</label>
+                    <textarea name="rqContent" class="form-control" aria-describedby="rqContentHelp" placeholder="{propiedad:'un valor'}"></textarea>
+                    <small id="rqContentHelp" class="form-text text-muted">Contenido del request en JSON.</small>
+                </div>
+                <section class="bg-warning">
+                    <div class="m-1">
+                        <h5>Verificar antes de probar</h5>
+                        <p>
+                            <small>Antes de probar, por favor, verifique que la hora de su PC está sincronizada usando
+                                <a href="http://www.world-timezone.com/" target="_blank">www.world-timezone.com</a>
+                            </small>
+                        </p>
+                        <p>NOTA: Es posible que Edge e InternetExplorer tengan una configuración de seguridad que, si bien la
+                            API es CORS-enabled, impide el uso de este ejemplo (Enhanced Protected Mode); use otro navegador.</p>
+                    </div>
+                </section>
+                <button type="submit" class="btn btn-primary">Prueba</button>
+            </form>
+            <section class="mt-3">
+                <h3>Response</h3>
+                <div class="progress" data-role="request-progress" style="display:none;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 100%"></div>
+                </div>
+                <p>Status code :
+                    <b id="response-status"></b>
+                </p>
+                <div class="border" data-role="response-container">
+                    <pre class="m-1" id="response"></pre>
+                </div>
+            </section>
+        </main>
+        <footer></footer>
+    </div>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/sjcl/sjcl.js"></script>
+    <script src="./node_modules/js-md5/build/md5.min.js"></script>
+    <script src="./index.js"></script>
+
+</body>
+
+</html>

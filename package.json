@@ -1,0 +1,28 @@
+{
+  "name": "autocosmos-connectapijavascript",
+  "version": "1.0.0",
+  "description": "Autocosmos api request example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dresoy/Autocosmos-ConnectApiJavaScript.git"
+  },
+  "keywords": [
+    "Autocosmos",
+    "javascript"
+  ],
+  "author": "Fabio Maulo, Dresoy Ravelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dresoy/Autocosmos-ConnectApiJavaScript/issues"
+  },
+  "homepage": "https://github.com/dresoy/Autocosmos-ConnectApiJavaScript#readme",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "js-md5": "^0.7.3",
+    "sjcl": "^1.0.7"
+  }
+}
